@@ -7,13 +7,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['password'] ?? '';
 
     if (!empty($email) && !empty($senha)) {
-        $stmt = $pdo->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ?");
+        // Buscar também o status de pagamento
+        $stmt = $pdo->prepare("SELECT id, nome, senha, pago FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($senha, $user['senha'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['nome'];
+            $_SESSION['usuario_pago'] = $user['pago']; // Cache do status de pagamento
 
             // Funcionalidade Lembrar-me
             if (isset($_POST['lembrar'])) {
