@@ -1,19 +1,20 @@
 <?php
 session_start();
+// O arquivo redirect_if_logged.php vai redirecionar se já estiver logado
 require_once 'php/redirect_if_logged.php';
 
-// Proteção: Só acessa se o pagamento foi concluído na sessão E o token estiver correto
-if (!isset($_SESSION['pago']) || $_SESSION['pago'] !== true) {
-    header("Location: checkout.php?error=" . urlencode("Você precisa adquirir o curso para criar uma conta."));
+// Proteção de Acesso (Segurança)
+// 1. Verifica se o pagamento foi confirmado e autorizado
+if (!isset($_SESSION['pago']) || $_SESSION['pago'] !== true || !isset($_SESSION['autorizado_cadastrar']) || $_SESSION['autorizado_cadastrar'] !== true) {
+    header("Location: checkout.php?error=" . urlencode("Acesso restrito. Realize o pagamento para acessar."));
     exit;
 }
 
-// Verificação adicional de token (se veio do process_payment.php)
+// 2. Verifica se o token da URL coincide com o da sessão
 if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET['secure_token'] !== $_SESSION['secure_token']) {
-    // Se o token não bater, pode ser um acesso direto ou tentativa de bypass
-    // Vamos ser rigorosos: manda pro checkout
-     header("Location: checkout.php?error=" . urlencode("Sessão inválida. Por favor, inicie o pagamento novamente."));
-     exit;
+    // Token inválido ou tentativa de acesso direto
+    header("Location: checkout.php?error=" . urlencode("Sessão inválida ou expirada."));
+    exit;
 }
 ?>
 
@@ -23,7 +24,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Conta - Mestria Digital</title>
+    <title>Finalizar Cadastro - Mestria Digital</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
@@ -71,6 +72,19 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
             color: var(--text-secondary);
             font-size: 14px;
             margin-bottom: 30px;
+        }
+
+        .success-banner {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .form-group {
@@ -137,19 +151,19 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
 
     <div class="login-page">
         <div class="login-card">
-            <div class="login-header" style="text-align: left; margin-bottom: 20px;">
-                <a href="index.php?home=1" style="color: var(--text-secondary); font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 5px;">
-                    <i class="fas fa-arrow-left"></i> Voltar à Home
-                </a>
-            </div>
+            
             <div class="login-logo">
-
                 <i class="fas fa-crown" style="color: var(--accent-blue);"></i>
                 <span>Mestria Digital</span>
             </div>
+            
+            <div class="success-banner">
+                <i class="fas fa-check-circle"></i> Pagamento Confirmado!
+            </div>
+
             <div class="login-header">
-                <h1>Criar Conta</h1>
-                <p>Junte-se à elite dos infoprodutores.</p>
+                <h1>Finalizar Cadastro</h1>
+                <p>Crie sua conta para acessar o conteúdo.</p>
             </div>
 
             <?php if (isset($_GET['error'])): ?>
@@ -161,7 +175,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
             <form action="php/registro_process.php" method="POST">
                 <div class="form-group">
                     <label>Nome Completo</label>
-                    <input type="text" name="nome" placeholder="Seu nome" required>
+                    <input type="text" name="nome" placeholder="Seu nome" required value="<?php echo isset($_SESSION['payment_data']['card_holder']) ? htmlspecialchars($_SESSION['payment_data']['card_holder']) : ''; ?>">
                 </div>
                 <div class="form-group">
                     <label>E-mail</label>
@@ -171,7 +185,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
                     <label>Senha</label>
                     <input type="password" name="password" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-login">Cadastrar</button>
+                <button type="submit" class="btn btn-primary btn-login">Finalizar Cadastro</button>
             </form>
 
             <div class="login-footer">
