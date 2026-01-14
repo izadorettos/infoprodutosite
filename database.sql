@@ -6,6 +6,8 @@ CREATE TABLE usuarios (
     senha VARCHAR(255) NOT NULL,
     token_login VARCHAR(255) DEFAULT NULL,
     status_pagamento ENUM('pendente', 'pago') DEFAULT 'pendente',
+    pago TINYINT(1) DEFAULT 0, -- 0 = Não Pago, 1 = Pago
+    status_assinatura ENUM('inativo', 'ativo') DEFAULT 'ativo',
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
