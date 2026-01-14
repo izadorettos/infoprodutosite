@@ -1,5 +1,5 @@
 <?php
-require_once 'auth.php';
+require_once 'php/auth.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ require_once 'auth.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suporte Especializado - Mestria Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
@@ -162,7 +162,7 @@ require_once 'auth.php';
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'php/header.php'; ?>
 
 
     <div class="chat-container">
@@ -207,7 +207,7 @@ require_once 'auth.php';
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 
