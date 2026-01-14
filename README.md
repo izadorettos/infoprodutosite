@@ -3,8 +3,6 @@
 Uma plataforma completa de venda de curso com área de membros, sistema de autenticação e checkout integrado, desenvolvida com foco em **Design Premium**, **Segurança** e **Experiência do Usuário**.
 
 ## 🚀 Demonstração
-O projeto está disponível online para visualização:
-👉(https://izadorettos.github.io/infoprodutosite/)
 
 O projeto simula um ambiente real de venda de um aprendizado, onde o usuário pode:
 - Conhecer o curso através de uma landing page moderna
