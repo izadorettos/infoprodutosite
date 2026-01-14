@@ -2,9 +2,10 @@
 session_start();
 require_once 'db.php';
 
-// Verificar se o pagamento foi feito antes de registrar
-if (!isset($_SESSION['pago']) || $_SESSION['pago'] !== true) {
-    header("Location: checkout.php");
+// Verificar trava de segurança rigorosa
+// Se a sessão 'pagamento_aprovado' não existir, o usuário NÃO pagou.
+if (!isset($_SESSION['pagamento_aprovado']) || $_SESSION['pagamento_aprovado'] !== true) {
+    header("Location: ../checkout.php");
     exit;
 }
 
@@ -28,15 +29,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
+
+
         // Criptografar a senha
         $hash = password_hash($senha, PASSWORD_DEFAULT);
 
-        // Inserir novo usuário com status_pagamento 'pago' (Garantia Dupla)
-        $sql = "INSERT INTO usuarios (nome, email, senha, status_pagamento) VALUES (?, ?, ?, 'pago')";
+        // Inserir novo usuário com pago = 1
+        $sql = "INSERT INTO usuarios (nome, email, senha, status_pagamento, pago, status_assinatura) VALUES (?, ?, ?, 'pago', 1, 'ativo')";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$nome, $email, $hash]);
 
-        // Limpar a sessão de pagamento e token após o uso para segurança
+        // Limpar a sessão de pagamento após o cadastro com sucesso para evitar reuso
+        unset($_SESSION['pagamento_aprovado']);
         unset($_SESSION['pago']);
         unset($_SESSION['secure_token']);
 
