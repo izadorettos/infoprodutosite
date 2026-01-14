@@ -1,5 +1,5 @@
 <?php
-require_once 'auth.php'; // Proteção da página
+require_once 'php/auth.php'; // Proteção da página
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,7 +7,7 @@ require_once 'auth.php'; // Proteção da página
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso Aluno | Mestria Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
         .student-dashboard {
@@ -73,7 +73,7 @@ require_once 'auth.php'; // Proteção da página
     </style>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'php/header.php'; ?>
 
     <main class="student-dashboard">
         <div class="container">
@@ -127,6 +127,6 @@ require_once 'auth.php'; // Proteção da página
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
