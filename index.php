@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once 'seo.php'; 
+require_once 'php/seo.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -13,12 +13,12 @@ require_once 'seo.php';
         'O método definitivo para criar, lançar e escalar seu infoproduto com excelência premium.',
         'https://seusite.com/index.php'
     ); ?>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'php/header.php'; ?>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -29,11 +29,11 @@ require_once 'seo.php';
                 infoproduto com o padrão de excelência que o mercado premium exige.</p>
             <div class="hero-cta reveal">
                 <a href="#benefits" class="btn btn-primary btn-large">Comece Sua Jornada Agora</a>
-                <a href="login.php" class="btn btn-secondary btn-large" style="margin-left: 15px;">Acesso do Aluno</a>
+                <a href="php/login.php" class="btn btn-secondary btn-large" style="margin-left: 15px;">Acesso do Aluno</a>
             </div>
 
             <div class="hero-image reveal">
-                <img src="tablet-mockup.png" alt="Mestria Digital E-book Mockup">
+                <img src="assets/tablet-mockup.png" alt="Mestria Digital E-book Mockup">
             </div>
         </div>
     </section>
@@ -107,7 +107,7 @@ require_once 'seo.php';
                     </ul>
                 </div>
                 <div class="inside-image">
-                    <img src="laptop-mockup.png" alt="Área de Membros Premium"
+                    <img src="assets/laptop-mockup.png" alt="Área de Membros Premium"
                         style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-medium);">
                 </div>
             </div>
@@ -264,7 +264,7 @@ require_once 'seo.php';
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 
