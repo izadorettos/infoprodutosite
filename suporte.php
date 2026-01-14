@@ -1,5 +1,10 @@
 <?php
 require_once 'php/auth.php';
+// Validação de pagamento via Sessão
+if (!isset($_SESSION['usuario_pago']) || $_SESSION['usuario_pago'] != 1) {
+    header('Location: checkout.php?erro=acesso_negado');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
