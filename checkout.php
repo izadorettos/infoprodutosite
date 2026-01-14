@@ -2,14 +2,14 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include 'header.php';
+include 'php/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Checkout | Mestria Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
         .checkout-section {
@@ -71,7 +71,7 @@ include 'header.php';
                     <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Você será redirecionado para criar sua conta após a aprovação.</p>
                     <img src="https://logodownload.org/wp-content/uploads/2014/10/visa-logo-1.png" style="width: 50px; margin-right: 10px;">
                     <img src="https://logodownload.org/wp-content/uploads/2014/10/mastercard-logo-0.png" style="width: 40px;">
-                    <form action="process_payment.php" method="POST">
+                    <form action="php/process_payment.php" method="POST">
                         <button type="submit" class="btn-pay">
                             <i class="fas fa-lock"></i> Pagar com Cartão/PIX
                         </button>
@@ -83,6 +83,6 @@ include 'header.php';
             </div>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
