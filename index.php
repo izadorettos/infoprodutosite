@@ -28,8 +28,8 @@ require_once 'php/seo.php';
             <p class="section-subtitle reveal">Aprenda as estratégias exatas para criar, lançar e escalar seu
                 infoproduto com o padrão de excelência que o mercado premium exige.</p>
             <div class="hero-cta reveal">
-                <a href="#benefits" class="btn btn-primary btn-large">Comece Sua Jornada Agora</a>
-                <a href="php/login.php" class="btn btn-secondary btn-large" style="margin-left: 15px;">Acesso do Aluno</a>
+                <a href="checkout.php" class="btn btn-primary btn-large">Quero Começar Agora</a>
+                <a href="php/login.php" class="btn btn-secondary btn-large" style="margin-left: 15px;">Já Sou Aluno</a>
             </div>
 
             <div class="hero-image reveal">
