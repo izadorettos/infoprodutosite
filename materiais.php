@@ -1,6 +1,6 @@
 <?php
-require_once 'auth.php';
-require_once 'db.php';
+require_once 'php/auth.php';
+require_once 'php/db.php';
 
 // Buscar status de pagamento do usuário logado
 $user_id = $_SESSION['user_id'];
@@ -17,7 +17,7 @@ $pago = ($user_data['status_pagamento'] === 'pago');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Materiais Complementares - Mestria Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
@@ -101,7 +101,7 @@ $pago = ($user_data['status_pagamento'] === 'pago');
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'php/header.php'; ?>
 
 
     <header class="page-header">
@@ -209,7 +209,7 @@ $pago = ($user_data['status_pagamento'] === 'pago');
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 
