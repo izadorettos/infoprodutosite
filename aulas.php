@@ -1,5 +1,11 @@
 <?php
-require_once 'php/auth.php'; // Proteção da página
+require_once 'php/auth.php'; // Proteção básica (Login)
+
+// Validação de pagamento via Sessão (Alta Performance)
+if (!isset($_SESSION['usuario_pago']) || $_SESSION['usuario_pago'] != 1) {
+    header('Location: checkout.php?erro=acesso_negado');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
