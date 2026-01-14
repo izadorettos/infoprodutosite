@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once 'redirect_if_logged.php'; 
+require_once 'php/redirect_if_logged.php'; 
 ?>
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@ require_once 'redirect_if_logged.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Mestria Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
         .login-page {
@@ -121,7 +121,7 @@ require_once 'redirect_if_logged.php';
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'php/header.php'; ?>
 
     <div class="login-page">
         <div class="login-card">
@@ -153,7 +153,7 @@ require_once 'redirect_if_logged.php';
             <?php endif; ?>
 
 
-            <form action="login_process.php" method="POST">
+            <form action="php/login_process.php" method="POST">
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="email" name="email" placeholder="seu@email.com" required>
@@ -177,7 +177,7 @@ require_once 'redirect_if_logged.php';
 
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 
