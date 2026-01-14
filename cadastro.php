@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'redirect_if_logged.php';
+require_once 'php/redirect_if_logged.php';
 
 // Proteção: Só acessa se o pagamento foi concluído na sessão E o token estiver correto
 if (!isset($_SESSION['pago']) || $_SESSION['pago'] !== true) {
@@ -24,7 +24,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta - Mestria Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
     <style>
         .login-page {
@@ -133,7 +133,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'php/header.php'; ?>
 
     <div class="login-page">
         <div class="login-card">
@@ -158,7 +158,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
                 </div>
             <?php endif; ?>
 
-            <form action="registro_process.php" method="POST">
+            <form action="php/registro_process.php" method="POST">
                 <div class="form-group">
                     <label>Nome Completo</label>
                     <input type="text" name="nome" placeholder="Seu nome" required>
@@ -179,7 +179,7 @@ if (!isset($_GET['secure_token']) || !isset($_SESSION['secure_token']) || $_GET[
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 
